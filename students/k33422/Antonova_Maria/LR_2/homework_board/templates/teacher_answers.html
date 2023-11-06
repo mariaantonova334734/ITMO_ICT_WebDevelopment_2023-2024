@@ -1,28 +1,22 @@
-{% if user.is_authenticated %}
+{% extends "base/base.html" %}
+
+{% block content%}
     <h1>Оценки учащихся:</h1>
     <table style="width: 100%; border: 1px solid black; border-collapse: collapse; text-align: center;">
         <tr>
+            <th style="border: 1px solid black;">Домашняя работа</th>
             <th style="border: 1px solid black;">Имя</th>
             <th style="border: 1px solid black;">Фамилия</th>
             <th style="border: 1px solid black;">Оценка</th>
         </tr>
-        {% for user, user_grades in grades.items %}
+        {% for journal in journals %}
             <tr>
-                <td style="border: 1px solid black;">{{ user.first_name }}</td>
-                <td style="border: 1px solid black;">{{ user.last_name }}</td>
-                <td style="border: 1px solid black;">
-                    {% for grade in user_grades %}
-                        {{ grade }}
-                    {% endfor %}
+                <td style="border: 1px solid black;">{{ journal.homework.subject }}</td>
+                <td style="border: 1px solid black;">{{ journal.student.first_name }}</td>
+                <td style="border: 1px solid black;">{{journal.student.last_name }}</td>
+                <td style="border: 1px solid black;">{{journal.grade }}
                 </td>
             </tr>
         {% endfor %}
     </table>    
-{% else %}
-    {% url 'users-login' as login_url %}
-    {% if not login_url %}
-        <p>В настоящее время страница входа недоступна. Попробуйте позже.</p>
-    {% else %}
-        <p>Пожалуйста, <a href="{{ login_url }}">войдите как учитель</a>, чтобы увидеть журнал.</p>
-    {% endif %}
-{% endif %}
+{% endblock %}
