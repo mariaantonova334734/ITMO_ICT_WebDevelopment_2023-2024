@@ -13,4 +13,8 @@ urlpatterns = [
     path('book-instance/<int:pk>/', OneInstanceAPIView.as_view()),
     path('rooms/list/', RoomListAPIView.as_view()),
     path('readers-info/', ReaderInfoAPIView.as_view()),
+    path('take_book/', BookTakingAPIView.as_view()),
+    path('taking_book/',BookTaking2APIView.as_view()),
+
+
 ]

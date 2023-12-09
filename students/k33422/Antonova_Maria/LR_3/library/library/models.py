@@ -10,6 +10,23 @@ class User(AbstractUser):
         return self.username
 
 
+class BookTaking(models.Model):
+    book_instance = models.ForeignKey(
+        'BookInstance',
+        verbose_name='Экземпляр книги',
+        on_delete=CASCADE,
+        related_name='book_taking'
+    )
+
+    reader = models.ForeignKey('Reader', on_delete=models.CASCADE,
+                               related_name='book_taking', verbose_name='Читатель')
+    data_issue = models.DateField(verbose_name='Последняя дата выдачи', blank=True, null=True)
+    #data_issue = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.book_instance} {self.reader}'
+
+
 class BookInstance(models.Model):
     section = models.CharField(max_length=20, verbose_name='Секция')
     code = models.CharField(max_length=20, verbose_name='Артикул экземпляра')
@@ -20,12 +37,10 @@ class BookInstance(models.Model):
         ('с', 'низкое'),
     )
     condition = models.CharField(max_length=1, choices=conditions, verbose_name='Состояние экземпляра')
-    book = models.ForeignKey('Book', verbose_name='Книга', on_delete=CASCADE,related_name='book_instances' )
-    reader = models.ForeignKey('Reader', on_delete=models.SET_NULL, null=True,
-                               related_name='book_instances', verbose_name='Читатель', blank=True)
+    book = models.ForeignKey('Book', verbose_name='Книга', on_delete=CASCADE, related_name='book_instances')
+
     room = models.ForeignKey('Room', related_name='book_instances', verbose_name='Зал',
                              on_delete=CASCADE, null=True, blank=True)
-    date_issue = models.DateTimeField(verbose_name='Последняя дата выдачи', blank=True, null=True)
 
     def __str__(self):
         return self.code
@@ -60,7 +75,6 @@ class Reader(models.Model):
 
     def __str__(self):
         return self.name
-
 
 
 class Room(models.Model):

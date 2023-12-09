@@ -18,19 +18,25 @@ class BookInstanceSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+# class RoomShortSerializer
+
 class BookSerializer(serializers.ModelSerializer):
     readers_limited_instances = serializers.SerializerMethodField()
     book_instances = BookInstanceSerializer(many=True, read_only=True)
+    rooms = serializers.SerializerMethodField()
 
     class Meta:
         model = Book
-        fields = ("id", "name", "author", "publisher", "book_instances", "readers_limited_instances")
-        read_only_fields = ('id', 'book_instances', 'readers_limited_instances')
+        fields = ("id", "name", "author", "publisher", "book_instances", "readers_limited_instances", 'rooms')
+        read_only_fields = ('id', 'book_instances', 'readers_limited_instances', 'rooms')
+
+    def get_rooms(self, book):
+        return Room.objects.filter(book_instances__book=book).values_list('name', flat=True)
 
     def get_readers_limited_instances(self, book):
         count_book_instance = book.book_instances.count()
         if count_book_instance <= 2:
-            readers = Reader.objects.filter(book_instances__book=book)
+            readers = Reader.objects.filter(book_taking__book_instance__book=book)
             return ReaderSerializer(readers, many=True).data
         return []
 
@@ -42,6 +48,11 @@ class RoomSerializer(serializers.ModelSerializer):
         model = Room
         fields = "__all__"
 
+class BookTakingSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = BookTaking
+        fields = ("book_instance", "reader","data_issue")
 #
 # class ReadersInfoSerializer(serializers.ModelSerializer):
 #     count_lt_20_years = serializers.SerializerMethodField()
