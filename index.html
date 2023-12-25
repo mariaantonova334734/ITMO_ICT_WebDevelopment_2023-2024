@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="None">
+        
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>Lab</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body class="homepage">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href=".">Lab</a>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#4" class="nav-link">Лабораторная работа 4</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#_1" class="nav-link">Цель лабораторной работы</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_2" class="nav-link">Практическое задание</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#2" class="nav-link">Описание работы (вариант 2)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_3" class="nav-link">Реализация функционала</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_4" class="nav-link">Вывод</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="4">Лабораторная работа 4</h1>
+<h2 id="_1">Цель лабораторной работы</h2>
+<p>Овладеть практическими навыками и умениями реализации клиентской части приложения средствами vue.js.</p>
+<h2 id="_2">Практическое задание</h2>
+<p>Порядок выполнения работы:
+* Реализовать интерфейсы авторизации, регистрации и изменения учётных данных и настроить взаимодействие с серверной частью
+* Реализовать клиентские интерфейсы и настроить взаимодействие с серверной частью
+* Подключить vuetify или аналогичную библиотеку</p>
+<h2 id="2">Описание работы (вариант 2)</h2>
+<p>Создать программную систему, предназначенную для работников библиотеки. Такая система должна обеспечивать хранение сведений об имеющихся в библиотеке книгах, о читателях библиотеки и читальных залах.</p>
+<p>Для каждой книги в БД должны храниться следующие сведения: название книги, автор (ы), издательство, год издания, раздел, число экземпляров этой книги в каждом зале библиотеки, а также шифр книги и дата закрепления книги за читателем. Книги могут перерегистрироваться в другом зале.</p>
+<h2 id="_3">Реализация функционала</h2>
+<ul>
+<li>Регистрация и авторизация от имени библиотекаря.</li>
+<li>Изменение данных (ФИО) библиотекаря.</li>
+<li>Просмотр всех книг.</li>
+<li>Просмотр всех экземпляров книг</li>
+<li>Закрепление книги за читателем.</li>
+<li>Открепление книги от читателя.</li>
+</ul>
+<h4 id="homeviewvue">Homeview.vue</h4>
+<pre><code>&lt;template&gt;
+  &lt;v-app&gt;
+    &lt;bar-layout&gt;
+      &lt;v-btn v-if="auth" @click="LK()"
+             text
+      &gt; Личный кабинет
+      &lt;/v-btn&gt;
+      &lt;v-spacer&gt;&lt;/v-spacer&gt;
+      &lt;v-btn v-if="auth" @click="Books()"
+             text
+      &gt; Книги
+      &lt;/v-btn&gt;
+      &lt;v-btn v-if="auth" @click="goLogout()"
+             text
+      &gt; Выход
+      &lt;/v-btn&gt;
+    &lt;/bar-layout&gt;
+    &lt;v-main class="vh-100" style="background-color: hsl(0, 0%, 96%);"&gt;
+      &lt;br&gt;&lt;br&gt;
+      &lt;HomePage/&gt;
+    &lt;/v-main&gt;
+  &lt;/v-app&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import BarLayout from '@/layouts/BarLayout.vue'
+import HomePage from '@/components/HomePage.vue'
+
+export default {
+  name: 'HomeView',
+  components: {BarLayout, HomePage},
+  computed: {
+    auth() {
+      var auth
+      if (localStorage.auth_token) {
+        auth = true
+      }
+      return auth
+    }
+  },
+  methods: {
+    goLogout() {
+      localStorage.clear()
+      this.$router.push({name: 'Login'})
+    },
+    Books() {
+      this.$router.push({name: 'Books'})
+    },
+    LK() {
+      this.$router.push({name: 'Manager'})
+    },
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<h4 id="loginviewvue">Loginview.vue</h4>
+<pre><code>&lt;template&gt;
+    &lt;v-app&gt;
+      &lt;bar-layout&gt;
+          &lt;LoginBar /&gt;
+        &lt;/bar-layout&gt;
+        &lt;v-main class = "vh-100" style = "background-color: hsl(0, 0%, 96%);"&gt;
+        &lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+        &lt;h1 style="text-align: center;" &gt; Вход в учетную запись  &lt;/h1&gt;
+        &lt;br&gt;
+        &lt;v-col cols="4" class="mx-auto"&gt;
+        &lt;v-card max-width = 600 color = "#f7f4ef"&gt;
+          &lt;v-row class = "py-2"&gt;
+            &lt;v-col cols="5" class="mx-auto"&gt;
+              &lt;v-text-field
+                label="Username"
+                v-model="username"
+                name="username"
+                placeholder="username"
+              /&gt;
+            &lt;/v-col&gt;
+            &lt;/v-row&gt;
+          &lt;v-row&gt;
+            &lt;v-col cols="5" class="mx-auto"&gt;
+              &lt;v-text-field
+                label="Password"
+                v-model="password"
+                name="password"
+                type = password
+              /&gt;
+            &lt;/v-col&gt;
+          &lt;/v-row&gt;
+          &lt;v-col cols="5" class="mx-auto"&gt;
+          &lt;v-btn block color = "blue" @click.prevent = "login()"&gt; Войти &lt;/v-btn&gt;
+          &lt;/v-col&gt;
+        &lt;/v-card&gt;
+      &lt;/v-col&gt;
+        &lt;/v-main&gt;
+        &lt;/v-app&gt;
+  &lt;/template&gt;
+
+  &lt;script&gt;
+  import BarLayout from '@/layouts/BarLayout.vue'
+  import LoginBar from '@/components/LoginBar.vue'
+  import axios from 'axios'
+  export default {
+    name: 'LogIn',
+    components:{ BarLayout, LoginBar},
+    data () { 
+          return {
+                  username: '',
+                  password: '',
+              }
+
+          }
+        ,
+        methods: {
+    async login() {
+        const response = await axios.post('http://127.0.0.1:8000/auth/token/login/',
+              {
+                username: this.username,
+                password: this.password,
+              })
+        if (response.data.auth_token) {
+            localStorage.auth_token = response.data.auth_token
+            window.location = '/home'
+
+        }
+          }
+
+        }
+      }
+  &lt;/script&gt;
+</code></pre>
+<h4 id="registrationviewvue">Registrationview.vue</h4>
+<pre><code>&lt;template&gt;
+  &lt;v-app&gt;
+    &lt;bar-layout&gt;
+      &lt;RegistrationBar/&gt;
+    &lt;/bar-layout&gt;
+    &lt;main class="vh-100" style="background-color: hsl(0, 0%, 96%);"&gt;
+      &lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+      &lt;h1 style="text-align: center;"&gt; Регистрация библиотекарей &lt;/h1&gt;
+      &lt;br&gt;
+      &lt;v-col cols="6" class="mx-auto"&gt;
+        &lt;v-card max-width=800 color="#f7f4ef"&gt;
+          &lt;v-row class="py-2"&gt;
+            &lt;v-col cols="5" class="mx-auto"&gt;
+              &lt;v-text-field
+                label="Логин"
+                v-model="signUpForm.username"
+                name="username"
+                placeholder="maria211"
+              /&gt;
+            &lt;/v-col&gt;
+          &lt;/v-row&gt;
+          &lt;v-row&gt;
+            &lt;v-col cols="5" class="mx-auto"&gt;
+              &lt;v-text-field
+                label="Имя"
+                v-model="signUpForm.first_name"
+                name="first_name"
+                placeholder="Мария"
+              /&gt;
+            &lt;/v-col&gt;
+          &lt;/v-row&gt;
+          &lt;v-row&gt;
+            &lt;v-col cols="5" class="mx-auto"&gt;
+              &lt;v-text-field
+                label="Фамилия"
+                v-model="signUpForm.last_name"
+                name="last_name"
+                placeholder="Антонова"
+              /&gt;
+            &lt;/v-col&gt;
+          &lt;/v-row&gt;
+          &lt;v-row&gt;
+            &lt;v-col cols="5" class="mx-auto"&gt;
+              &lt;v-text-field
+                label="Password"
+                v-model="signUpForm.password"
+                name="password"
+                type=password
+              /&gt;
+            &lt;/v-col&gt;
+          &lt;/v-row&gt;
+          &lt;v-col cols="5" class="mx-auto"&gt;
+            &lt;v-btn block color="blue" @click.prevent="register()"&gt; Register&lt;/v-btn&gt;
+          &lt;/v-col&gt;
+        &lt;/v-card&gt;
+      &lt;/v-col&gt;
+    &lt;/main&gt;
+  &lt;/v-app&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import BarLayout from '@/layouts/BarLayout.vue'
+import RegistrationBar from '@/components/RegistrationBar.vue'
+import axios from 'axios'
+
+export default {
+  name: 'SignUp',
+  components: {BarLayout, RegistrationBar},
+  data: () =&gt; ({
+    signUpForm: {
+      username: '',
+      password: '',
+      first_name: '',
+      last_name: ''
+    }
+  }),
+  methods: {
+    async register() {
+      try {
+        await axios.post('http://127.0.0.1:8000/users/', this.signUpForm)
+        this.$router.push({name: 'Login'})
+      } catch (e) {
+        if (e.response.data.non_field_errors) {
+          alert(e.response.data.non_field_errors)
+        } else if (e.response.data.username) {
+          alert('Логин: ' + e.response.data.username)
+        } else if (e.response.data.password) {
+          alert('Пароль: ' + e.response.data.password)
+        } else if (e.response.data.first_name) {
+          alert('Имя: ' + e.response.data.first_name)
+        } else if (e.response.data.last_name) {
+          alert('Фамилия: ' + e.response.data.last_name)
+        } else {
+          console.error(e.message)
+        }
+
+      }
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<h4 id="booksviewvue">Booksview.vue</h4>
+<pre><code>&lt;template&gt;
+  &lt;section&gt;
+    &lt;v-app&gt;
+      &lt;bar-layout&gt;
+        &lt;AllBooks/&gt;
+      &lt;/bar-layout&gt;
+      &lt;v-main class="vh-100" style="background-color: hsl(0, 0%, 96%);"&gt;
+        &lt;v-row class="mx-3.5"&gt;
+          &lt;v-col cols="4" class="mx-auto"&gt;
+            &lt;br&gt;&lt;br&gt;
+            &lt;div&gt;
+              &lt;h2&gt;Каталог библиотеки&lt;/h2&gt;
+              &lt;v-card elevation="5"
+                      outlined
+                      class="my-2"
+                      v-for="book in books" v-bind:key="book" v-bind:book="book"&gt;
+                &lt;a @click.prevent="goBook(book.id)"&gt;{{ book.name }}&lt;/a&gt;
+              &lt;/v-card&gt;
+            &lt;/div&gt;
+          &lt;/v-col&gt;
+        &lt;/v-row&gt;
+      &lt;/v-main&gt;
+    &lt;/v-app&gt;
+  &lt;/section&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import BarLayout from '@/layouts/BarLayout.vue'
+import AllBooks from '@/components/AllBooks.vue'
+import axios from 'axios'
+
+export default {
+  name: 'BookList',
+  data() {
+    return {
+      books: ''
+    }
+  },
+  created() {
+    this.loadBooks()
+  },
+  components: {BarLayout, AllBooks},
+
+  methods: {
+    async loadBooks() {
+      const response = await axios.get('http://127.0.0.1:8000/library/books/list/')
+      this.books = response.data
+    },
+    goBook(bookID) {
+
+      this.$router.push({name: 'Book', params: {id: bookID}})
+    },
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<h4 id="bookviewvue">Bookview.vue</h4>
+<pre><code>&lt;template&gt;
+  &lt;section&gt;
+    &lt;v-app&gt;
+      &lt;bar-layout&gt;
+        &lt;OneBook/&gt;
+      &lt;/bar-layout&gt;
+      &lt;v-main class="vh-100" style="background-color: hsl(0, 0%, 96%);"&gt;
+        &lt;v-row class="mx-3.5"&gt;
+          &lt;v-col cols="5" class="mx-auto"&gt;
+            &lt;br&gt;&lt;br&gt;
+            &lt;div&gt;
+              &lt;v-card
+                v-if="book"
+                elevation="2"
+                outlined
+                class="my-5"
+              &gt;
+                &lt;v-card-title&gt;
+                  &lt;h2&gt;{{ this.book.title }}&lt;/h2&gt;
+                &lt;/v-card-title&gt;
+
+                &lt;v-card-text&gt;
+                  &lt;div class="text--primary"&gt;
+                    &lt;b&gt;Авторы:&lt;/b&gt; {{ this.book.author }}&lt;br&gt;
+                    &lt;b&gt;Издательство:&lt;/b&gt; {{ this.book.publisher }} &lt;br&gt;
+                    &lt;b&gt;Библиотечный номер:&lt;/b&gt; {{ this.book.id }} &lt;br&gt;
+                    &lt;br&gt;
+                    &lt;b&gt;Экземпляры книги:&lt;/b&gt;
+                    &lt;ul&gt;
+                      &lt;li v-for="book_instance in this.book.book_instances" v-bind:key="book_instance"
+                          v-bind:book_instance="book_instance"&gt;
+
+                        &lt;b&gt;Год издания:&lt;/b&gt; {{ book_instance.year }}&lt;br&gt;
+                        &lt;b&gt;Секция:&lt;/b&gt; {{ book_instance.section }}&lt;br&gt;
+                        &lt;b&gt;Артикул:&lt;/b&gt; {{ book_instance.code }}&lt;br&gt;
+                        &lt;v-btn v-if="!book_instance.takenId" color="primary" light
+                               @click="onSelectReader(book_instance.id)"&gt;Выдать книгу
+                        &lt;/v-btn&gt;
+                        &lt;v-card
+                          v-else
+                          elevation="2"
+                          outlined
+                          class="my-2"&gt;
+                          &lt;v-card-text&gt;
+                            &lt;div class="text--primary"&gt;Книга сейчас читается&lt;/div&gt;
+                          &lt;/v-card-text&gt;
+                          &lt;v-spacer&gt;&lt;/v-spacer&gt;
+                          &lt;v-btn block color="red" light @click="onReturnBook(book_instance)"&gt;Вернуть книгу в библиотеку&lt;/v-btn&gt;
+                        &lt;/v-card&gt;
+                        &lt;br&gt;
+                      &lt;/li&gt;
+                    &lt;/ul&gt;
+                  &lt;/div&gt;
+                &lt;/v-card-text&gt;
+              &lt;/v-card&gt;
+
+
+            &lt;/div&gt;
+          &lt;/v-col&gt;
+        &lt;/v-row&gt;
+      &lt;/v-main&gt;
+    &lt;/v-app&gt;
+  &lt;/section&gt;
+  &lt;v-dialog v-if="givingBook" :model-value="true" @close="givingBook = null"&gt;
+    &lt;div style="padding: 20px"&gt;
+      &lt;v-card&gt;
+        &lt;v-list density="compact"&gt;
+          &lt;v-list-subheader&gt;Читатели&lt;/v-list-subheader&gt;
+          &lt;select v-model="givingBook.reader" style="outline: 1px solid black"&gt;
+            &lt;option disabled :value="null"&gt;Выберите читателя&lt;/option&gt;
+            &lt;option
+              v-for="r in readers"
+              :key="r.id"
+              :value="r"
+            &gt;
+              {{ r.name }}
+            &lt;/option&gt;
+          &lt;/select&gt;
+        &lt;/v-list&gt;
+        &lt;v-spacer&gt;&lt;/v-spacer&gt;
+        &lt;div v-if="givingBook.reader"&gt;
+          &lt;v-btn color="primary" @click="onGivingBook"&gt;Выдать&lt;/v-btn&gt;
+        &lt;/div&gt;
+      &lt;/v-card&gt;
+    &lt;/div&gt;
+  &lt;/v-dialog&gt;
+&lt;/template&gt;
+
+
+&lt;script&gt;
+import BarLayout from '@/layouts/BarLayout.vue'
+import OneBook from '@/components/OneBook.vue'
+import axios from 'axios'
+import {th} from "vuetify/locale";
+
+export default {
+  name: 'BookView',
+  components: {BarLayout, OneBook},
+  data() {
+    return {
+      book: null,
+      readers: null,
+      takenBooks: null,
+      givingBook: null,
+      bookInstancesById: {}
+    }
+  },
+  async created() {
+    [this.book, this.takenBooks] = await Promise.all([
+      axios.get('http://127.0.0.1:8000/library/books/' + this.$route.params.id).then(r =&gt; r.data),
+      axios.get('http://127.0.0.1:8000/library/taking_book/list/').then(r =&gt; r.data)
+    ])
+    for (const item of this.book.book_instances) {
+      item.takenId = null
+      this.bookInstancesById[item.id] = item
+    }
+    for (const tb of this.takenBooks) {
+      if (this.bookInstancesById[tb.book_instance]) {
+        this.bookInstancesById[tb.book_instance].takenId = tb.id
+      }
+    }
+  },
+  methods: {
+    async onReturnBook(book_instance) {
+      await axios.delete('http://127.0.0.1:8000/library/taking_book/' + book_instance.takenId)
+      book_instance.takenId = null
+    },
+    async onSelectReader(bookId) {
+      if (!this.readers) {
+        const response = await axios.get('http://127.0.0.1:8000/library/readers/list/')
+        this.readers = response.data
+      }
+      this.givingBook = {
+        bookId,
+        reader: null
+      }
+    },
+    async onGivingBook() {
+      const date = new Date()
+      const pad = (n) =&gt; String(n).padStart(2, '0')
+      const ymd = `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`
+      const response = await axios.post('http://127.0.0.1:8000/library/taking_book/', {
+        book_instance: this.givingBook.bookId,
+        reader: this.givingBook.reader.id,
+        data_issue: ymd
+      }).then(r =&gt; r.data)
+      this.bookInstancesById[response.book_instance].takenId = response.id
+      this.givingBook = null
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<h4 id="managerinfoviewvue">ManagerInfoview.vue</h4>
+<pre><code>&lt;template&gt;
+  &lt;v-app&gt;
+    &lt;bar-layout&gt;
+      &lt;ManagerInfo/&gt;
+    &lt;/bar-layout&gt;
+    &lt;v-main class="vh-100" style="background-color: hsl(0, 0%, 96%);"&gt;
+      &lt;v-row class="mx-3.5"&gt;
+        &lt;v-col cols="4" class="mx-auto"&gt;
+          &lt;br&gt;&lt;br&gt;
+          &lt;div&gt;
+            &lt;v-card
+              elevation="2"
+              outlined
+              class="my-2"
+            &gt;
+              &lt;v-card-title&gt;
+                &lt;h2&gt;Личный кабинет&lt;/h2&gt;
+              &lt;/v-card-title&gt;
+
+              &lt;v-card-text&gt;
+                &lt;div class="text--primary"&gt;
+                  &lt;b&gt;Имя:&lt;/b&gt; {{ this.manager.first_name }} &lt;br&gt;
+                  &lt;b&gt;Фамилия:&lt;/b&gt; {{ this.manager.last_name }} &lt;br&gt;
+                  &lt;b&gt;Логин:&lt;/b&gt; {{ this.manager.username }} &lt;br&gt;
+                &lt;/div&gt;
+              &lt;/v-card-text&gt;
+            &lt;/v-card&gt;
+            &lt;v-btn block color="green" light @click.prevent="goEdit"&gt;Редактировать профиль&lt;/v-btn&gt;
+          &lt;/div&gt;
+        &lt;/v-col&gt;
+      &lt;/v-row&gt;
+    &lt;/v-main&gt;
+  &lt;/v-app&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import BarLayout from '@/layouts/BarLayout.vue'
+import ManagerInfo from '@/components/ManagerInfo.vue'
+import axios from 'axios'
+
+export default {
+  name: 'ManagerLK',
+  components: {BarLayout, ManagerInfo: ManagerInfo},
+  data() {
+    return {
+      manager: {}
+    }
+  },
+  created() {
+    this.loadManagerData()
+  },
+  methods: {
+    async loadManagerData() {
+      const response = await axios
+        .get('http://127.0.0.1:8000/users/me/', {
+          headers: {
+            Authorization: `Token ${localStorage.auth_token}`
+          }
+        })
+      this.manager = response.data
+    },
+    goEdit() {
+      this.$router.push({name: 'EditManager'})
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<h2 id="_4">Вывод</h2>
+<p>В рамках данной лабораторной работы были получены навыки по реализации клиентской части приложения средствами vue.js. Был получен опыт по реализации клиентской части библиотеки.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="js/jquery-3.6.0.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js"></script>
+        <script src="search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.5.3
+Build Date UTC : 2023-12-25 11:55:23.919593+00:00
+-->
