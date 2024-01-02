@@ -1,0 +1,15 @@
+site_name: "Лабораторные работы"
+theme:
+  name: material
+  features:
+    - navigation.indexes
+    - content.code.copy
+nav:
+  - "№1: Сокеты":
+      - lw1/index.md
+  - "№2: Django":
+      - lw2/index.md
+  - "№3: Реализация серверной части на django rest":
+      - lw3/index.md
+  - "№4: Vue.js":
+      - lw4/index.md
