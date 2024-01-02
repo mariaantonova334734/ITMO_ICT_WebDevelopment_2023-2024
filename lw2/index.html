@@ -1,0 +1,836 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../lw1/">
+      
+      
+        <link rel="next" href="../lw3/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.1">
+    
+    
+      
+        <title>Лабораторная работа 2. Реализация простого сайта средствами Django - Лабораторные работы</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.72749a73.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#2-django" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Лабораторные работы" class="md-header__button md-logo" aria-label="Лабораторные работы" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Лабораторные работы
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Лабораторная работа 2. Реализация простого сайта средствами Django
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Лабораторные работы" class="md-nav__button md-logo" aria-label="Лабораторные работы" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Лабораторные работы
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../lw1/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    №1: Сокеты
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            №1: Сокеты
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="./" class="md-nav__link md-nav__link--active">
+              
+  
+  <span class="md-ellipsis">
+    №2: Django
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            №2: Django
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../lw3/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    №3: Реализация серверной части на django rest
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            №3: Реализация серверной части на django rest
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../lw4/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    №4: Vue.js
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            №4: Vue.js
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    Цель лабораторной работы
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Практическое задание
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    Задание в соответствии с вариантом 2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Реализация функционала
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    Описание моделей
+  </a>
+  
+    <nav class="md-nav" aria-label="Описание моделей">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#homework" class="md-nav__link">
+    Модель Homework
+  </a>
+  
+    <nav class="md-nav" aria-label="Модель Homework">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    Поля
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#answer" class="md-nav__link">
+    Модель Answer
+  </a>
+  
+    <nav class="md-nav" aria-label="Модель Answer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    Поля
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    Формы
+  </a>
+  
+    <nav class="md-nav" aria-label="Формы">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#answerform" class="md-nav__link">
+    Класс AnswerForm (Форма ответа)
+  </a>
+  
+    <nav class="md-nav" aria-label="Класс AnswerForm (Форма ответа)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    Поля
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signupform" class="md-nav__link">
+    Класс SignUpForm (Форма регистрации)
+  </a>
+  
+    <nav class="md-nav" aria-label="Класс SignUpForm (Форма регистрации)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    Поля
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    Панель администратора
+  </a>
+  
+    <nav class="md-nav" aria-label="Панель администратора">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#urls" class="md-nav__link">
+    URLS
+  </a>
+  
+    <nav class="md-nav" aria-label="URLS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#school_homework_boardurlspy" class="md-nav__link">
+    school_homework_board/urls.py
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#userurlspy" class="md-nav__link">
+    user/urls.py
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#views" class="md-nav__link">
+    VIEWS
+  </a>
+  
+    <nav class="md-nav" aria-label="VIEWS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#student_homework" class="md-nav__link">
+    student_homework
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#teachers_answers" class="md-nav__link">
+    teachers_answers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sign_up" class="md-nav__link">
+    sign_up
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    Вывод
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="2-django">Лабораторная работа 2. Реализация простого сайта средствами Django</h1>
+<h2 id="_1">Цель лабораторной работы</h2>
+<p>Овладеть практическими навыками и умениями реализации web-сервисов
+средствами Django 2.2.</p>
+<h2 id="_2">Практическое задание</h2>
+<p>Реализовать сайт используя фреймворк Django 3 и СУБД PostgreSQL, в соответствии с вариантом задания лабораторной работы.</p>
+<h2 id="2">Задание в соответствии с вариантом 2</h2>
+<p>О домашнем задании должна храниться следующая информация: предмет,
+преподаватель, дата выдачи, период выполнения, текст задания, информация о штрафах.</p>
+<p>Необходимо реализовать следующий функционал</p>
+<h2 id="_3">Реализация функционала</h2>
+<ul>
+<li>Регистрация новых пользователей.</li>
+<li>Просмотр домашних заданий по всем дисциплинам (сроки выполнения, описание задания)</li>
+<li>Сдача домашних заданий в текстовом виде.</li>
+<li>Администратор (учитель) должен иметь возможность поставить оценку за задание средствами Django-admin.</li>
+<li>В клиентской части должна формироваться таблица, отображающая оценки всех учеников класса.</li>
+</ul>
+<h2 id="_4">Описание моделей</h2>
+<h3 id="homework">Модель Homework</h3>
+<p>Модель <code>Homework</code> представляет собой таблицу, содержащую информацию о домашних заданиях.</p>
+<h4 id="_5">Поля</h4>
+<ul>
+<li><code>title</code> (CharField): Название домашнего задания. Максимальная длина - 100 символов.</li>
+<li><code>subject</code> (CharField): Предмет, к которому относится домашнее задание. Максимальная длина - 100 символов.</li>
+<li><code>teacher</code> (CharField): Имя учителя, выдавшего задание. Максимальная длина - 100 символов.</li>
+<li><code>description</code> (TextField): Описание домашнего задания.</li>
+<li><code>due_date</code> (DateTimeField): Дата и время сдачи домашнего задания.</li>
+<li><code>penalty_info</code> (TextField): Информация о штрафе за опоздание или невыполнение задания.
+<img alt="img_1.png" src="img_1.png" /></li>
+</ul>
+<h3 id="answer">Модель Answer</h3>
+<p>Модель <code>Answer</code> представляет собой таблицу, содержащую информацию об ответах студентов на домашние задания.</p>
+<h4 id="_6">Поля</h4>
+<ul>
+<li><code>homework</code> (ForeignKey): Ссылка на домашнее задание, к которому относится ответ.</li>
+<li><code>student</code> (ForeignKey): Ссылка на студента, отправившего ответ.</li>
+<li><code>answer_text</code> (TextField): Текст ответа студента.</li>
+<li><code>date_created</code> (DateTimeField): Дата и время создания ответа.</li>
+<li><code>grade</code> (IntegerField): Оценка, которую выставил учитель за ответ.</li>
+</ul>
+<h2 id="_7">Формы</h2>
+<h3 id="answerform">Класс <code>AnswerForm</code> (Форма ответа)</h3>
+<p>Класс <code>AnswerForm</code> представляет собой форму, связанную с моделью <code>Answer</code> для ввода данных ответов студентов на домашние задания.</p>
+<h4 id="_8">Поля</h4>
+<ul>
+<li><code>answer_text</code> (TextField) - Текст ответа студента.</li>
+<li><code>homework</code> (ForeignKey) - Выпадающее меню для выбора домашнего задания, к которому относится ответ.</li>
+</ul>
+<h3 id="signupform">Класс <code>SignUpForm</code> (Форма регистрации)</h3>
+<p>Класс <code>SignUpForm</code> представляет собой форму регистрации пользователей, основанную на модели <code>User</code>.</p>
+<h4 id="_9">Поля</h4>
+<ul>
+<li><code>username</code> (CharField) - Имя пользователя.</li>
+<li><code>first_name</code> (CharField) - Имя пользователя.</li>
+<li><code>last_name</code> (CharField) - Фамилия пользователя.</li>
+<li><code>password1</code> (CharField) - Пароль (поле ввода).</li>
+<li><code>password2</code> (CharField) - Подтверждение пароля (поле ввода).</li>
+</ul>
+<h2 id="_10">Панель администратора</h2>
+<p>Класс HomeworkAdmin представляет настройки административного интерфейса. Он наследует от admin.ModelAdmin и определяет следующие настройки:
+- <code>list_display</code> : показывает следующие поля title(название), subject (предмет), teacher(преподаватель) и due_data(дата дедлайна)
+Также показывается дата создания для AnswerAdmin.
+<img alt="img_2.png" src="img_2.png" /></p>
+<h3 id="urls">URLS</h3>
+<ul>
+<li><code>admin</code> - панель администратора</li>
+<li><code>student_homework</code> - домашнее задание со стороны студента-пользователя</li>
+<li><code>teacher_answers</code> - отображение со стороны учителя</li>
+<li><code>sign_up</code> - регистрация пользователя</li>
+<li><code>login</code> - выполняется вход в систему</li>
+</ul>
+<h4 id="school_homework_boardurlspy">school_homework_board/urls.py</h4>
+<pre><code>from django.contrib import admin
+from django.urls import path,include 
+from homework_board.views import student_homework, teacher_answers
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('student_homework/', student_homework, name='student_homework'),
+    path('teacher_answers/', teacher_answers, name='teacher_answers'),
+    path('', include('users.urls'))
+]
+</code></pre>
+<h4 id="userurlspy">user/urls.py</h4>
+<pre><code>from django.contrib.auth import views as auth_view
+from django.urls import path
+from .import views
+
+
+urlpatterns = [
+    path('sign_up/', views.sign_up, name='users-sign-up'),
+    path('login/', auth_view.LoginView.as_view(template_name='login.html'), name='users-login')
+]
+</code></pre>
+<h2 id="views">VIEWS</h2>
+<h3 id="student_homework">student_homework</h3>
+<pre><code>def student_homework(request):
+    homework = Homework.objects.all()
+    if request.method == 'POST':
+        form = AnswerForm(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.student = request.user
+            instance.save()
+            return redirect('student_homework')
+    else:
+        form = AnswerForm()
+    return render(request, 'student_homework.html', {'homework': homework, 'form': form})
+</code></pre>
+<p>Описание: Эта функция отображает страницу домашнего задания для учащегося, извлекает все домашние задания из моделей домашних заданий, затем отправляет форму ответа на задание, сохраняет ответ учащегося в базе данных и перенаправляет на страницу домашнего задания учащегося
+<img alt="img.png" src="img.png" /></p>
+<h3 id="teachers_answers">teachers_answers</h3>
+<pre><code>def teacher_answers(request):
+    students = User.objects.filter(is_staff=False)
+    grades = {user: Answer.objects.filter(student=user).values_list('grade', flat=True) for user in students}
+    return render(request, 'teacher_answers.html', {'students': students, 'grades': grades})
+</code></pre>
+<p>Описание: отображает страницу ответов учащихся преподавателю, фильтрует всех учащихся и получает оценки, полученные каждым учащимся за свои ответы, в форме словаря, а затем передает данные в teacher_answers.html
+<img alt="img_3.png" src="img_3.png" /></p>
+<h3 id="sign_up">sign_up</h3>
+<pre><code>def sign_up(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('student_homework')  # Замените 'home' на URL вашей домашней страницы
+    else:
+        form = SignUpForm()
+    return render(request, 'sign_up.html', {'form': form})
+</code></pre>
+<p><img alt="img_4.png" src="img_4.png" />
+Описание: обрабатывает запрос на регистрацию пользователя, проверяет введенные данные формы, сохраняет пользователя в базе данных и перенаправляет на страницу домашнего задания ученика.</p>
+<h2 id="_11">Вывод</h2>
+<p>В рамках данной лабораторной работы были получены навыки по реализации простого сайта средствами Django. Был получен опыт по реализации web-сервисов для сдачи домашних заданий.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.indexes", "content.code.copy"], "search": "../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.4e0fa4ba.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,981 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../lw2/">
+      
+      
+        <link rel="next" href="../lw4/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.1">
+    
+    
+      
+        <title>Практическая работа 3.1 - Лабораторные работы</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.72749a73.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#31" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Лабораторные работы" class="md-header__button md-logo" aria-label="Лабораторные работы" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Лабораторные работы
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Практическая работа 3.1
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Лабораторные работы" class="md-nav__button md-logo" aria-label="Лабораторные работы" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Лабораторные работы
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../lw1/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    №1: Сокеты
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            №1: Сокеты
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../lw2/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    №2: Django
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            №2: Django
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="./" class="md-nav__link md-nav__link--active">
+              
+  
+  <span class="md-ellipsis">
+    №3: Реализация серверной части на django rest
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            №3: Реализация серверной части на django rest
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../lw4/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    №4: Vue.js
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            №4: Vue.js
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    Задание 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Задание 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    Листинг кода
+  </a>
+  
+    <nav class="md-nav" aria-label="Листинг кода">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modelspy-" class="md-nav__link">
+    models.py - модель базы данных
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Выполнение
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    Задание 2.1
+  </a>
+  
+    <nav class="md-nav" aria-label="Задание 2.1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    Выполнение
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    Задание 2.2
+  </a>
+  
+    <nav class="md-nav" aria-label="Задание 2.2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    Выполнение
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    Задание 2.3
+  </a>
+  
+    <nav class="md-nav" aria-label="Задание 2.3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    Выполнение
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    Задание 2.4
+  </a>
+  
+    <nav class="md-nav" aria-label="Задание 2.4">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    Выполнение
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#25" class="md-nav__link">
+    Задание 2.5
+  </a>
+  
+    <nav class="md-nav" aria-label="Задание 2.5">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    Выполнение
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#31_1" class="md-nav__link">
+    Задание 3.1
+  </a>
+  
+    <nav class="md-nav" aria-label="Задание 3.1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    Выполнение
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    Задание 3.2
+  </a>
+  
+    <nav class="md-nav" aria-label="Задание 3.2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    Выполнение
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    Задание 3.3
+  </a>
+  
+    <nav class="md-nav" aria-label="Задание 3.3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    Выполнение
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    Задание 3.4
+  </a>
+  
+    <nav class="md-nav" aria-label="Задание 3.4">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    Выполнение
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    Задание 3.5
+  </a>
+  
+    <nav class="md-nav" aria-label="Задание 3.5">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    Выполнение
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="31">Практическая работа 3.1</h1>
+<h2 id="1">Задание 1</h2>
+<p>Описание: напишите запрос на создание 6-7 новых автовладельцев и 5-6 автомобилей, каждому автовладельцу назначьте удостоверение и от 1 до 3 автомобилей. Задание можете выполнить либо в интерактивном режиме интерпретатора, либо в отдельном python-файле. Результатом должны стать запросы и отображение созданных объектов.</p>
+<h3 id="_1">Листинг кода</h3>
+<h4 id="modelspy-">models.py - модель базы данных</h4>
+<pre><code>class Car_owner(AbstractUser):
+    id_owner = models.IntegerField(primary_key=True)
+    birth_day = models.DateField(null=True)
+    passport = models.IntegerField(null=True)
+    address = models.CharField(max_length=50, null=True, blank=True)
+    nationality = models.CharField(max_length=20, null=True, blank=True)
+
+    def __str__(self):
+        return self.username
+
+
+class Car(models.Model):
+    id_car = models.IntegerField(primary_key=True)
+    state_number = models.CharField(max_length=15, null=False)
+    mark_car = models.CharField(max_length=20, null=False)
+    model_car = models.CharField(max_length=20, null=False)
+    color = models.CharField(max_length=30, null=True)
+    car_owner = models.ManyToManyField(Car_owner, through='Ownership')
+
+    def __str__(self):
+        return self.state_number
+
+
+class Ownership(models.Model):
+    id_owner = models.ForeignKey(Car_owner, on_delete=models.CASCADE, related_name="ownerships")
+    id_car = models.ForeignKey(Car, on_delete=models.CASCADE, related_name="ownerships")
+    start_date = models.DateField()
+    end_date = models.DateField(null=True)
+
+
+class Driver_license(models.Model):
+    id_owner = models.ForeignKey(Car_owner, on_delete=models.CASCADE, related_name='licenses')
+    license_number = models.CharField(max_length=10, null=False)
+    type = models.CharField(max_length=10, null=False)
+    date_of_license = models.DateField()
+</code></pre>
+<h3 id="_2">Выполнение</h3>
+<p>Создание автомобиля
+<img alt="img_1.png" src="img_1.png" />
+Создание владельца автомобиля и создание связи между автомобилем и владельцем
+<img alt="img.png" src="img.png" />
+Создание остальных автовладельцев, машин и водительских удостоверений
+<img alt="img_2.png" src="img_2.png" /></p>
+<h2 id="21">Задание 2.1</h2>
+<p>Выведете все машины марки “Toyota” (или любой другой марки, которая у вас есть)</p>
+<h3 id="_3">Выполнение</h3>
+<p><img alt="img_3.png" src="img_3.png" /></p>
+<h2 id="22">Задание 2.2</h2>
+<p>Найти всех водителей с именем Maria</p>
+<h3 id="_4">Выполнение</h3>
+<p><img alt="img_4.png" src="img_4.png" /></p>
+<h2 id="23">Задание 2.3</h2>
+<p>Взяв любого случайного владельца получить его id, и по этому id получить экземпляр удостоверения в виде объекта модели (можно в 2 запроса)</p>
+<h3 id="_5">Выполнение</h3>
+<p><img alt="img_5.png" src="img_5.png" /></p>
+<h2 id="24">Задание 2.4</h2>
+<p>Вывести всех владельцев красных машин</p>
+<h3 id="_6">Выполнение</h3>
+<p><img alt="img_6.png" src="img_6.png" /></p>
+<h2 id="25">Задание 2.5</h2>
+<p>Найти всех владельцев, чей год владения машиной начинается с 2010 </p>
+<h3 id="_7">Выполнение</h3>
+<p><img alt="img_7.png" src="img_7.png" /></p>
+<h2 id="31_1">Задание 3.1</h2>
+<p>Вывод даты выдачи самого старшего водительского удостоверения</p>
+<h3 id="_8">Выполнение</h3>
+<p><img alt="img_8.png" src="img_8.png" /></p>
+<h2 id="32">Задание 3.2</h2>
+<p>Укажите самую позднюю дату владения машиной, имеющую какую-то из существующих моделей в вашей базе</p>
+<h3 id="_9">Выполнение</h3>
+<p><img alt="img_9.png" src="img_9.png" /></p>
+<h2 id="33">Задание 3.3</h2>
+<p>Выведите количество машин для каждого водителя</p>
+<h3 id="_10">Выполнение</h3>
+<p><img alt="img_10.png" src="img_10.png" /></p>
+<h2 id="34">Задание 3.4</h2>
+<p>Подсчитайте количество машин каждой марки</p>
+<h3 id="_11">Выполнение</h3>
+<p><img alt="img_11.png" src="img_11.png" /></p>
+<h2 id="35">Задание 3.5</h2>
+<p>Отсортируйте всех автовладельцев по дате выдачи удостоверения </p>
+<h3 id="_12">Выполнение</h3>
+<p><img alt="img_12.png" src="img_12.png" /></p>
+<h1 id="3">Лабораторная работа 3</h1>
+<h2 id="_13">Цель лабораторной работы</h2>
+<p>Овладеть практическими навыками и умениями реализации web-сервисов
+средствами Django.</p>
+<h2 id="_14">Практическое задание</h2>
+<p>Реализовать сайт, используя фреймворк Django 3, Django REST Framework, Djoser и
+СУБД PostgreSQL *, в соответствии с вариантом задания лабораторной работы.</p>
+<h2 id="2">Описание работы (вариант 2)</h2>
+<p>Создать программную систему, предназначенную для работников библиотеки. Такая система должна обеспечивать хранение сведений об имеющихся в библиотеке книгах, о читателях библиотеки и читальных залах.</p>
+<p>Для каждой книги в БД должны храниться следующие сведения: название книги, автор (ы), издательство, год издания, раздел, число экземпляров этой книги в каждом зале библиотеки, а также шифр книги и дата закрепления книги за читателем. Книги могут перерегистрироваться в другом зале.</p>
+<p>Сведения о читателях библиотеки должны включать номер читательского билета, ФИО читателя, номер паспорта, дату рождения, адрес, номер телефона, образование, наличие ученой степени.</p>
+<p>Читатели закрепляются за определенным залом, могут переписаться в другой зал и могут записываться и выписываться из библиотеки.</p>
+<p>Библиотека имеет несколько читальных залов, которые характеризуются номером, названием и вместимостью, то есть количеством людей, которые могут одновременно работать в зале.</p>
+<p>Библиотека может получать новые книги и списывать старые. Шифр книги может измениться в результате переклассификации, а номер читательского билета в результате перерегистрации.</p>
+<h2 id="_15">Реализация функционала</h2>
+<ul>
+<li>Записать в библиотеку нового читателя.</li>
+<li>Исключить из списка читателей людей, записавшихся в библиотеку более года
+назад и не прошедших перерегистрацию.</li>
+<li>Списать старую или потерянную книгу.</li>
+<li>Принять книгу в фонд библиотеки.</li>
+</ul>
+<h4 id="modelspy">models.py</h4>
+<pre><code>class User(AbstractUser):
+    REQUIRED_FIELDS = ['first_name', 'last_name']
+
+    def __str__(self):
+        return self.username
+
+
+class BookInstance(models.Model):
+    section = models.CharField(max_length=20, verbose_name='Секция')
+    code = models.CharField(max_length=20, verbose_name='Артикул экземпляра')
+    year = models.IntegerField(verbose_name='Год издания')
+    conditions = (
+        ('a', 'высокое'),
+        ('b', 'среднее'),
+        ('с', 'низкое'),
+    )
+    condition = models.CharField(max_length=1, choices=conditions, verbose_name='Состояние экземпляра')
+    book = models.ForeignKey('Book', verbose_name='Книга', on_delete=CASCADE,related_name='book_instances' )
+    reader = models.ForeignKey('Reader', on_delete=models.SET_NULL, null=True,
+                               related_name='book_instances', verbose_name='Читатель', blank=True)
+    room = models.ForeignKey('Room', related_name='book_instances', verbose_name='Зал',
+                             on_delete=CASCADE, null=True, blank=True)
+    date_issue = models.DateTimeField(verbose_name='Последняя дата выдачи', blank=True, null=True)
+
+    def __str__(self):
+        return self.code
+
+
+class Book(models.Model):
+    name = models.CharField(max_length=50, verbose_name='Название')
+    author = models.CharField(max_length=70, verbose_name="Автор(ы)")
+    publisher = models.CharField(max_length=30, verbose_name='Издательство')
+
+    def __str__(self):
+        return self.name
+
+
+class Reader(models.Model):
+    ticket = models.CharField(max_length=20, verbose_name='Номер билета читателя')
+    name = models.CharField(max_length=70, verbose_name="ФИО")
+    passport = models.CharField(max_length=20, verbose_name='Номер паспорта')
+    birth_date = models.DateField(verbose_name='Дата рождения')
+    address = models.CharField(max_length=100, verbose_name='Адрес')
+    phone_number = models.CharField(max_length=20, verbose_name='Номер телефона')
+    educations = (
+        ('н', 'начальное'),
+        ('с', 'среднее'),
+        ('в', 'высшее'),
+    )
+    education = models.CharField(max_length=1, choices=educations, verbose_name='Образование')
+    degree = models.BooleanField(default=False, verbose_name='Наличие ученой степени')
+    registration_date = models.DateField(verbose_name='Дата регистрации')
+    room = models.ForeignKey('Room', related_name='readers', verbose_name='Зал, за которым закреплен читатель',
+                             on_delete=CASCADE, null=True)
+
+    def __str__(self):
+        return self.name
+
+
+
+class Room(models.Model):
+    name = models.CharField(max_length=20, verbose_name='Название')
+    capacity = models.IntegerField(verbose_name='Вместимость')
+
+    def __str__(self):
+        return self.name
+</code></pre>
+<h4 id="viewspy">views.py</h4>
+<pre><code>from django.db.models.query import QuerySet
+from django.shortcuts import render
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
+from .models import *
+from .serializers import *
+from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.permissions import IsAuthenticated
+
+
+# просмотр информации о читателях
+class ReaderListAPIView(ListAPIView):
+    serializer_class = ReaderSerializer
+    queryset = Reader.objects.all()
+
+
+# создание читателя
+class CreateReaderAPIView(CreateAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = ReaderSerializer
+    queryset = Reader.objects.all()
+
+
+# просмотр всех произведений в библиотеке
+class BookListAPIView(ListAPIView):
+    serializer_class = BookSerializer
+    queryset = Book.objects.all()
+
+
+# появление нового произведения в библиотеке
+class CreateBookAPIView(CreateAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = BookSerializer
+    queryset = Book.objects.all()
+
+
+# просмотр экземпляров произведений
+class BookInstanceAPIView(ListAPIView):
+    serializer_class = BookInstanceSerializer
+    queryset = BookInstance.objects.all()
+
+# появление нового экземпляра произведения в библиотеке
+class CreateInstanceAPIView(CreateAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = BookInstanceSerializer
+    queryset = BookInstance.objects.all()
+
+
+# редактирование и удаление произведений
+class OneBookAPIView(RetrieveUpdateDestroyAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = BookSerializer
+    queryset = Book.objects.all()
+
+
+# редактирование и удаление экземпляров
+class OneInstanceAPIView(RetrieveUpdateDestroyAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = BookInstanceSerializer
+    queryset = BookInstance.objects.all()
+
+
+# редактирование и удаление читателей
+class ReaderDetailAPIView(RetrieveUpdateDestroyAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = ReaderSerializer
+    queryset = Reader.objects.all()
+
+#просмотр всех читательских залов библиотеки
+class RoomListAPIView(ListAPIView):
+    serializer_class = RoomSerializer
+    queryset = Room.objects.all()
+</code></pre>
+<h2 id="_16">Вывод</h2>
+<p>В рамках данной лабораторной работы были получены навыки по реализации простого сайта средствами Django. Был получен опыт по реализации web-сервисов библиотеки.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.indexes", "content.code.copy"], "search": "../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.4e0fa4ba.min.js"></script>
+      
+    
+  </body>
+</html>
